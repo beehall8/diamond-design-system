@@ -37,7 +37,7 @@ export default function App() {
               <span className="block text-[#4f7dff] [text-shadow:0_0_30px_rgba(79,125,255,.32)]">Design</span>
               <span className="block">System</span>
             </h1>
-            <p className="mt-7 max-w-[430px] text-base leading-7 text-white/60">The all-in-one Blender plugin for creating professional jewelry with unmatched speed, precision, and realism.</p>
+            <p className="mt-7 max-w-[430px] text-base leading-7 text-white/60">The all-in-one Blender plugin for creating professional diamond jewelry with unmatched speed, precision, and realism.</p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a href={checkoutUrl} className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#4b72ff] to-[#6a8cff] px-6 py-4 text-sm font-semibold shadow-[0_0_35px_rgba(79,125,255,.36)] transition hover:scale-[1.02]">Join Now – $50 / month <ArrowRight size={17}/></a>
               <a href="#features" className="flex items-center gap-3 text-sm font-medium text-white/85"><span className="grid size-10 place-items-center rounded-full border border-[#6f93ff]/60 bg-[#4f7dff]/10"><Play size={16} fill="currentColor"/></span>Watch Demo</a>
