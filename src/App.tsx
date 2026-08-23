@@ -22,7 +22,7 @@ export default function App() {
 
       <section id="top" className="relative pt-20">
         <div className="absolute inset-x-0 top-20 z-20 mx-auto flex max-w-7xl items-start justify-between px-6 pt-8 lg:px-8"><div className="max-w-xl pointer-events-none"><p className="mb-4 text-xs font-medium uppercase tracking-[0.28em] text-white/45">Blender plugin for jewelry designers</p><h1 className="text-4xl font-semibold tracking-[-0.045em] sm:text-6xl lg:text-7xl">Design extraordinary jewelry faster.</h1></div></div>
-        <BrokenByDesign title="diamond by design." height="min(900px, 92dvh)" className="min-h-[720px]" />
+        <BrokenByDesign title="Diamond Design System" height="min(900px, 92dvh)" className="min-h-[720px]" />
         <div className="pointer-events-none absolute inset-x-0 bottom-10 z-30 mx-auto flex max-w-7xl items-end justify-between px-6 lg:px-8"><p className="max-w-md text-sm leading-6 text-white/55 sm:text-base">Diamond Design System gives jewelry artists a premium workflow for faster modeling, cleaner results and production-ready design.</p><a href="#pricing" className="pointer-events-auto hidden items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm backdrop-blur-md transition hover:bg-white hover:text-black sm:flex">Join for $50/month <ArrowRight size={16} /></a></div>
       </section>
 
