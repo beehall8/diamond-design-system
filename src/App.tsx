@@ -1,12 +1,16 @@
-import { ArrowRight, Check, Code2, Gem, Layers3, Play, ShieldCheck, Sparkles, Zap } from 'lucide-react'
+import { ArrowRight, Check, DraftingCompass, Gem, Grid3X3, Layers3, Play, Settings2, ShieldCheck, Sparkles, Zap } from 'lucide-react'
 import BrokenByDesign from '@/components/ui/broken-by-design'
 
 const features = [
-  { icon: Gem, title: 'Premium visual language', text: 'A polished system for luxury, modern and high-conversion digital products.' },
-  { icon: Layers3, title: 'Reusable building blocks', text: 'Compose pages faster with a consistent component structure and repeatable design patterns.' },
-  { icon: Code2, title: 'Designer + developer ready', text: 'Built for modern React workflows with TypeScript, Tailwind CSS and shadcn-style organization.' },
-  { icon: Zap, title: 'Ship faster', text: 'Spend less time rebuilding patterns and more time creating memorable product experiences.' },
+  { icon: Gem, title: 'Parametric Gems', text: 'Smart gem tools with automatic proportions and real-world accuracy.' },
+  { icon: Settings2, title: 'Advanced Settings', text: 'Build complex settings with ease. Prongs, bezels, halos, pavé and more.' },
+  { icon: Grid3X3, title: 'Pavé System', text: 'Intelligent pavé tools that save hours of manual work.' },
+  { icon: DraftingCompass, title: 'CAD Precision', text: 'Production-ready models with clean geometry and scale.' },
+  { icon: Layers3, title: 'Materials Library', text: 'Realistic materials and metals with photoreal rendering.' },
+  { icon: Zap, title: 'Workflow Boost', text: 'Optimized tools that help you design faster and more efficiently.' },
 ]
+
+const trustedBrands = ['JOHNNY DANG', 'ICEBOX', 'TRAAX NYC', 'THE JEWELERS CLUB', 'PRIVATE JEWELER']
 
 export default function App() {
   const checkoutUrl = import.meta.env.VITE_CHECKOUT_URL || '#pricing'
@@ -50,7 +54,32 @@ export default function App() {
         </div>
       </section>
 
-      <section id="features" className="border-t border-white/10 py-28 sm:py-36"><div className="mx-auto max-w-7xl px-6 lg:px-8"><div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr]"><div><p className="mb-4 text-xs uppercase tracking-[0.28em] text-[#6f93ff]">Powerful features</p><h2 className="max-w-md text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Everything you need to design extraordinary jewelry.</h2><p className="mt-6 max-w-md leading-7 text-white/50">A focused Blender toolkit for professional jewelry design, precision and speed.</p></div><div className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2">{features.map(({ icon: Icon, title, text }) => <article key={title} className="bg-[#07090d] p-8 sm:p-10"><Icon className="mb-12 text-[#6f93ff]" size={26} strokeWidth={1.5}/><h3 className="mb-3 text-xl font-medium tracking-tight">{title}</h3><p className="text-sm leading-6 text-white/45">{text}</p></article>)}</div></div></div></section>
+      <section className="border-t border-white/10 bg-[#030407]">
+        <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+          <p className="mb-8 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-[#6f93ff]">Trusted by 3D artists & jewelers worldwide</p>
+          <div className="grid grid-cols-2 items-center gap-x-8 gap-y-7 text-center sm:grid-cols-3 lg:grid-cols-5">
+            {trustedBrands.map((brand, index) => <div key={brand} className="flex min-h-14 items-center justify-center text-white/65"><span className={`${index===1 || index===2 ? 'tracking-[0.12em]' : 'tracking-[0.04em]'} text-sm font-semibold sm:text-base`}>{brand}</span></div>)}
+          </div>
+        </div>
+      </section>
+
+      <section id="features" className="border-t border-white/10 bg-[radial-gradient(circle_at_50%_0%,rgba(47,91,220,.08),transparent_32%)] py-20 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-[#5f86ff]">Powerful Features</p>
+            <h2 className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl lg:text-5xl">Everything You Need to Design<br className="hidden sm:block"/> Extraordinary Jewelry</h2>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+            {features.map(({ icon: Icon, title, text }) => (
+              <article key={title} className="group rounded-2xl border border-[#648aff]/20 bg-[#070a10] px-5 py-7 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.025)] transition hover:-translate-y-1 hover:border-[#648aff]/40 hover:bg-[#0a0e17] hover:shadow-[0_16px_50px_rgba(35,77,190,.13)]">
+                <div className="mx-auto mb-6 grid size-12 place-items-center rounded-full bg-[#4f7dff]/5 text-[#5f86ff] [filter:drop-shadow(0_0_10px_rgba(79,125,255,.45))]"><Icon size={27} strokeWidth={1.55}/></div>
+                <h3 className="mb-3 text-sm font-semibold text-white/95">{title}</h3>
+                <p className="text-[11px] leading-5 text-white/48">{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="overflow-hidden border-y border-white/10 bg-white text-black"><div className="mx-auto grid max-w-7xl gap-10 px-6 py-24 lg:grid-cols-2 lg:px-8 lg:py-32"><div><p className="mb-4 text-xs uppercase tracking-[0.28em] text-[#3157d6]">Designed for professionals</p><h2 className="text-4xl font-semibold tracking-[-0.045em] sm:text-6xl">Built for quality. Made for speed.</h2></div><div className="flex flex-col justify-end"><p className="max-w-xl text-lg leading-8 text-black/60">Create rings, settings, pavé layouts and presentation-ready jewelry concepts with a workflow built around real design production.</p><div className="mt-10 grid grid-cols-3 gap-4 border-t border-black/15 pt-8 text-sm"><div><strong className="block text-2xl">3D</strong><span className="text-black/45">Precision tools</span></div><div><strong className="block text-2xl">CAD</strong><span className="text-black/45">Clean geometry</span></div><div><strong className="block text-2xl">FAST</strong><span className="text-black/45">Better workflow</span></div></div></div></div></section>
 
