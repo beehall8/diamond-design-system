@@ -19,28 +19,10 @@ const trustedBrands = [
 ]
 
 function TrustedBrand({ brand }: { brand: (typeof trustedBrands)[number] }) {
-  if (brand.key === 'johnny') {
-    return <div className="flex flex-col items-center justify-center text-white/72">
-      <div className="mb-1 font-serif text-3xl leading-none tracking-[-0.12em]">J<span className="relative -left-1">D</span></div>
-      <div className="font-serif text-[15px] tracking-[0.08em]">{brand.name}</div>
-      <div className="mt-1 text-[7px] tracking-[0.24em] text-white/38">{brand.sub}</div>
-    </div>
-  }
-  if (brand.key === 'icebox') {
-    return <div className="flex flex-col items-center justify-center text-white/72">
-      <div className="font-serif text-[28px] tracking-[0.18em]">{brand.name}</div>
-      <div className="mt-1 text-[7px] tracking-[0.30em] text-white/38">{brand.sub}</div>
-    </div>
-  }
-  if (brand.key === 'traax') {
-    return <div className="flex flex-col items-center justify-center text-white/72">
-      <div className="font-serif text-[26px] tracking-[0.12em]">{brand.name}</div>
-      <div className="mt-1 font-serif text-[10px] tracking-[0.35em] text-white/48">{brand.sub}</div>
-    </div>
-  }
-  if (brand.key === 'jewelers') {
-    return <div className="max-w-[130px] text-center font-serif text-[18px] uppercase leading-[0.92] tracking-[0.04em] text-white/70">THE<br/>JEWELERS<br/>CLUB</div>
-  }
+  if (brand.key === 'johnny') return <div className="flex flex-col items-center justify-center text-white/72"><div className="mb-1 font-serif text-3xl leading-none tracking-[-0.12em]">J<span className="relative -left-1">D</span></div><div className="font-serif text-[15px] tracking-[0.08em]">{brand.name}</div><div className="mt-1 text-[7px] tracking-[0.24em] text-white/38">{brand.sub}</div></div>
+  if (brand.key === 'icebox') return <div className="flex flex-col items-center justify-center text-white/72"><div className="font-serif text-[28px] tracking-[0.18em]">{brand.name}</div><div className="mt-1 text-[7px] tracking-[0.30em] text-white/38">{brand.sub}</div></div>
+  if (brand.key === 'traax') return <div className="flex flex-col items-center justify-center text-white/72"><div className="font-serif text-[26px] tracking-[0.12em]">{brand.name}</div><div className="mt-1 font-serif text-[10px] tracking-[0.35em] text-white/48">{brand.sub}</div></div>
+  if (brand.key === 'jewelers') return <div className="max-w-[130px] text-center font-serif text-[18px] uppercase leading-[0.92] tracking-[0.04em] text-white/70">THE<br/>JEWELERS<br/>CLUB</div>
   return <div className="max-w-[140px] text-center font-serif text-[20px] uppercase leading-[0.95] tracking-[0.05em] text-white/70">PRIVATE<br/>JEWELER</div>
 }
 
@@ -48,77 +30,13 @@ export default function App() {
   const checkoutUrl = import.meta.env.VITE_CHECKOUT_URL || '#pricing'
   return (
     <main className="min-h-screen bg-[#030407] text-white selection:bg-[#4f7dff] selection:text-white">
-      <nav className="fixed inset-x-0 top-0 z-[100] border-b border-white/10 bg-[#030407]/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
-          <a href="#top" className="flex items-center gap-3 font-semibold tracking-tight">
-            <span className="grid size-9 rotate-45 place-items-center border border-[#6d94ff]/55 bg-[#4f7dff]/10 shadow-[0_0_28px_rgba(79,125,255,.2)]"><span className="-rotate-45 text-xs">D</span></span>
-            <span>Diamond Design System</span>
-          </a>
-          <div className="hidden items-center gap-8 text-sm text-white/60 md:flex"><a className="transition hover:text-white" href="#features">Features</a><a className="transition hover:text-white" href="#pricing">Pricing</a><a className="transition hover:text-white" href="#faq">FAQ</a></div>
-          <a href="#pricing" className="rounded-full bg-gradient-to-r from-[#4f7dff] to-[#6c8dff] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(79,125,255,.38)] transition hover:scale-[1.03]">Get Access</a>
-        </div>
-      </nav>
-
-      <section id="top" className="relative min-h-[780px] overflow-hidden pt-20 lg:min-h-[820px]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_73%_44%,rgba(58,107,255,.18),transparent_24%)]" />
-        <div className="relative mx-auto h-[700px] max-w-[1500px] px-6 lg:h-[740px] lg:px-8">
-          <div className="relative z-30 flex h-full max-w-[520px] flex-col justify-center pb-14 pt-10 lg:w-[39%] lg:pb-8 lg:pt-0">
-            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.30em] text-[#6f93ff]">Blender Plugin</p>
-            <h1 className="text-[clamp(4rem,6.2vw,7rem)] font-black uppercase leading-[.80] tracking-[-0.065em]">
-              <span className="block">Diamond</span>
-              <span className="block text-[#4f7dff] [text-shadow:0_0_30px_rgba(79,125,255,.32)]">Design</span>
-              <span className="block">System</span>
-            </h1>
-            <p className="mt-7 max-w-[430px] text-base leading-7 text-white/60">The all-in-one Blender plugin for creating professional diamond jewelry with unmatched speed, precision, and realism.</p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <a href={checkoutUrl} className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#4b72ff] to-[#6a8cff] px-6 py-4 text-sm font-semibold shadow-[0_0_35px_rgba(79,125,255,.36)] transition hover:scale-[1.02]">Access Now – $50 / month <ArrowRight size={17}/></a>
-              <a href="#features" className="flex items-center gap-3 text-sm font-medium text-white/85"><span className="grid size-10 place-items-center rounded-full border border-[#6f93ff]/60 bg-[#4f7dff]/10"><Play size={16} fill="currentColor"/></span>Watch Demo</a>
-            </div>
-            <div className="mt-5 flex items-center gap-2 text-xs text-white/40"><ShieldCheck size={14} className="text-[#6f93ff]"/>Cancel anytime. No long-term commitment.</div>
-          </div>
-
-          <div className="absolute bottom-[2%] right-[-7%] top-[2%] z-10 hidden w-[69%] lg:block">
-            <BrokenByDesign title="easy by design." height="100%" className="bg-transparent" />
-          </div>
-          <div className="absolute bottom-0 right-[-42%] top-[38%] z-10 w-[115%] opacity-90 lg:hidden">
-            <BrokenByDesign title="easy by design." height="100%" className="bg-transparent" />
-          </div>
-        </div>
-      </section>
-
-      <section className="border-t border-white/10 bg-[#030407]">
-        <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
-          <p className="mb-8 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-[#6f93ff]">Trusted by 3D artists & jewelers worldwide</p>
-          <div className="grid grid-cols-2 items-center gap-x-8 gap-y-8 text-center sm:grid-cols-3 lg:grid-cols-5">
-            {trustedBrands.map((brand) => <div key={brand.key} className="flex min-h-20 items-center justify-center"><TrustedBrand brand={brand}/></div>)}
-          </div>
-        </div>
-      </section>
-
-      <section id="features" className="border-t border-white/10 bg-[radial-gradient(circle_at_50%_0%,rgba(47,91,220,.08),transparent_32%)] py-20 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto mb-12 max-w-3xl text-center">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-[#5f86ff]">Powerful Features</p>
-            <h2 className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl lg:text-5xl">Everything You Need to Design<br className="hidden sm:block"/> Extraordinary Jewelry</h2>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-            {features.map(({ icon: Icon, title, text }) => (
-              <article key={title} className="group rounded-2xl border border-[#648aff]/20 bg-[#070a10] px-5 py-7 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.025)] transition hover:-translate-y-1 hover:border-[#648aff]/40 hover:bg-[#0a0e17] hover:shadow-[0_16px_50px_rgba(35,77,190,.13)]">
-                <div className="mx-auto mb-6 grid size-12 place-items-center rounded-full bg-[#4f7dff]/5 text-[#5f86ff] [filter:drop-shadow(0_0_10px_rgba(79,125,255,.45))]"><Icon size={27} strokeWidth={1.55}/></div>
-                <h3 className="mb-3 text-sm font-semibold text-white/95">{title}</h3>
-                <p className="text-[11px] leading-5 text-white/48">{text}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <nav className="fixed inset-x-0 top-0 z-[100] border-b border-white/10 bg-[#030407]/80 backdrop-blur-xl"><div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8"><a href="#top" className="flex items-center gap-3 font-semibold tracking-tight"><span className="grid size-9 rotate-45 place-items-center border border-[#6d94ff]/55 bg-[#4f7dff]/10 shadow-[0_0_28px_rgba(79,125,255,.2)]"><span className="-rotate-45 text-xs">D</span></span><span>Diamond Design System</span></a><div className="hidden items-center gap-8 text-sm text-white/60 md:flex"><a className="transition hover:text-white" href="#features">Features</a><a className="transition hover:text-white" href="#pricing">Pricing</a><a className="transition hover:text-white" href="#faq">FAQ</a></div><a href="#pricing" className="rounded-full bg-gradient-to-r from-[#4f7dff] to-[#6c8dff] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(79,125,255,.38)] transition hover:scale-[1.03]">Get Access</a></div></nav>
+      <section id="top" className="relative min-h-[780px] overflow-hidden pt-20 lg:min-h-[820px]"><div className="absolute inset-0 bg-[radial-gradient(circle_at_73%_44%,rgba(58,107,255,.18),transparent_24%)]"/><div className="relative mx-auto h-[700px] max-w-[1500px] px-6 lg:h-[740px] lg:px-8"><div className="relative z-30 flex h-full max-w-[520px] flex-col justify-center pb-14 pt-10 lg:w-[39%] lg:pb-8 lg:pt-0"><p className="mb-5 text-xs font-semibold uppercase tracking-[0.30em] text-[#6f93ff]">Blender Plugin</p><h1 className="text-[clamp(4rem,6.2vw,7rem)] font-black uppercase leading-[.80] tracking-[-0.065em]"><span className="block">Diamond</span><span className="block text-[#4f7dff] [text-shadow:0_0_30px_rgba(79,125,255,.32)]">Design</span><span className="block">System</span></h1><p className="mt-7 max-w-[430px] text-base leading-7 text-white/60">The all-in-one Blender plugin for creating professional diamond jewelry with unmatched speed, precision, and realism.</p><div className="mt-8 flex flex-wrap items-center gap-4"><a href={checkoutUrl} className="flex items-center gap-3 rounded-xl bg-gradient-to-r from-[#4b72ff] to-[#6a8cff] px-6 py-4 text-sm font-semibold shadow-[0_0_35px_rgba(79,125,255,.36)] transition hover:scale-[1.02]">Access Now – $50 / month <ArrowRight size={17}/></a><a href="#features" className="flex items-center gap-3 text-sm font-medium text-white/85"><span className="grid size-10 place-items-center rounded-full border border-[#6f93ff]/60 bg-[#4f7dff]/10"><Play size={16} fill="currentColor"/></span>Watch Demo</a></div><div className="mt-5 flex items-center gap-2 text-xs text-white/40"><ShieldCheck size={14} className="text-[#6f93ff]"/>Cancel anytime. No long-term commitment.</div></div><div className="absolute bottom-[2%] right-[-7%] top-[2%] z-10 hidden w-[69%] lg:block"><BrokenByDesign title="easy by design." height="100%" className="bg-transparent"/></div><div className="absolute bottom-0 right-[-42%] top-[38%] z-10 w-[115%] opacity-90 lg:hidden"><BrokenByDesign title="easy by design." height="100%" className="bg-transparent"/></div></div></section>
+      <section className="border-t border-white/10 bg-[#030407]"><div className="mx-auto max-w-7xl px-6 py-10 lg:px-8"><p className="mb-8 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-[#6f93ff]">Trusted by 3D artists & jewelers worldwide</p><div className="grid grid-cols-2 items-center gap-x-8 gap-y-8 text-center sm:grid-cols-3 lg:grid-cols-5">{trustedBrands.map((brand)=><div key={brand.key} className="flex min-h-20 items-center justify-center"><TrustedBrand brand={brand}/></div>)}</div></div></section>
+      <section id="features" className="border-t border-white/10 bg-[radial-gradient(circle_at_50%_0%,rgba(47,91,220,.08),transparent_32%)] py-20 sm:py-24"><div className="mx-auto max-w-7xl px-6 lg:px-8"><div className="mx-auto mb-12 max-w-4xl text-center"><p className="mb-4 text-xs font-semibold uppercase tracking-[0.28em] text-[#5f86ff]">Powerful Features</p><h2 className="text-3xl font-semibold tracking-[-0.035em] sm:text-4xl lg:text-5xl">This is a tool you need if you design Diamond Jewelry</h2></div><div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">{features.map(({icon:Icon,title,text})=><article key={title} className="group rounded-2xl border border-[#648aff]/20 bg-[#070a10] px-5 py-7 text-center shadow-[inset_0_1px_0_rgba(255,255,255,.025)] transition hover:-translate-y-1 hover:border-[#648aff]/40 hover:bg-[#0a0e17] hover:shadow-[0_16px_50px_rgba(35,77,190,.13)]"><div className="mx-auto mb-6 grid size-12 place-items-center rounded-full bg-[#4f7dff]/5 text-[#5f86ff] [filter:drop-shadow(0_0_10px_rgba(79,125,255,.45))]"><Icon size={27} strokeWidth={1.55}/></div><h3 className="mb-3 text-sm font-semibold text-white/95">{title}</h3><p className="text-[11px] leading-5 text-white/48">{text}</p></article>)}</div></div></section>
       <section className="overflow-hidden border-y border-white/10 bg-white text-black"><div className="mx-auto grid max-w-7xl gap-10 px-6 py-24 lg:grid-cols-2 lg:px-8 lg:py-32"><div><p className="mb-4 text-xs uppercase tracking-[0.28em] text-[#3157d6]">Designed for professionals</p><h2 className="text-4xl font-semibold tracking-[-0.045em] sm:text-6xl">Built for quality. Made for speed.</h2></div><div className="flex flex-col justify-end"><p className="max-w-xl text-lg leading-8 text-black/60">Create rings, settings, pavé layouts and presentation-ready jewelry concepts with a workflow built around real design production.</p><div className="mt-10 grid grid-cols-3 gap-4 border-t border-black/15 pt-8 text-sm"><div><strong className="block text-2xl">3D</strong><span className="text-black/45">Precision tools</span></div><div><strong className="block text-2xl">CAD</strong><span className="text-black/45">Clean geometry</span></div><div><strong className="block text-2xl">FAST</strong><span className="text-black/45">Better workflow</span></div></div></div></div></section>
-
-      <section id="pricing" className="py-28 sm:py-36"><div className="mx-auto max-w-5xl px-6 lg:px-8"><div className="mb-12 text-center"><p className="mb-4 text-xs uppercase tracking-[0.28em] text-[#6f93ff]">Simple pricing</p><h2 className="text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Unlimited creativity. One simple price.</h2></div><div className="relative overflow-hidden rounded-[2rem] border border-[#648aff]/25 bg-gradient-to-b from-[#4f7dff]/[0.12] to-white/[0.03] p-8 shadow-2xl shadow-[#3157d6]/10 sm:p-12"><div className="relative grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end"><div><div className="mb-7 flex items-center gap-2 text-sm text-white/60"><Sparkles size={16} className="text-[#6f93ff]"/> Diamond Design System Membership</div><div className="mb-8 flex items-end gap-2"><span className="text-7xl font-semibold tracking-[-0.06em]">$50</span><span className="pb-2 text-white/45">/ month</span></div><div className="grid gap-4 text-sm text-white/65 sm:grid-cols-2">{['Full plugin access','All future updates included','Priority support','Professional workflow tools','Commercial project use','Cancel anytime'].map(item => <div key={item} className="flex gap-3"><Check size={17} className="mt-0.5 shrink-0 text-[#6f93ff]"/>{item}</div>)}</div></div><a href={checkoutUrl} className="flex min-w-56 items-center justify-center gap-2 rounded-full bg-[#4f7dff] px-7 py-4 font-semibold text-white shadow-[0_0_30px_rgba(79,125,255,.28)] transition hover:scale-[1.02] hover:bg-[#658dff]">Access Now – $50/month <ArrowRight size={18}/></a></div></div></div></section>
-
-      <section id="faq" className="border-t border-white/10 py-24"><div className="mx-auto max-w-5xl px-6 lg:px-8"><h2 className="mb-10 text-3xl font-semibold tracking-tight">Frequently asked questions</h2><div className="divide-y divide-white/10 border-y border-white/10">{[['What is Diamond Design System?','A premium Blender plugin and jewelry design workflow built to help artists create professional jewelry faster.'],['How much does it cost?','Membership is $50 per month.'],['Do I need advanced Blender skills?','The system is designed to streamline jewelry workflows for both growing and experienced Blender users.'],['Can I cancel?','Yes. The membership is monthly and can be configured for cancellation through your billing provider.']].map(([q,a]) => <div key={q} className="grid gap-4 py-7 sm:grid-cols-[0.8fr_1.2fr]"><h3 className="font-medium">{q}</h3><p className="text-sm leading-6 text-white/50">{a}</p></div>)}</div></div></section>
-      <footer className="border-t border-white/10 py-10"><div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 text-sm text-white/35 sm:flex-row sm:items-center sm:justify-between lg:px-8"><span>© 2026 Diamond Design System</span><span>Professional jewelry design for Blender.</span></div></footer>
+      <section id="pricing" className="py-28 sm:py-36"><div className="mx-auto max-w-5xl px-6 lg:px-8"><div className="mb-12 text-center"><p className="mb-4 text-xs uppercase tracking-[0.28em] text-[#6f93ff]">Simple pricing</p><h2 className="text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Unlimited creativity. One simple price.</h2></div><div className="relative overflow-hidden rounded-[2rem] border border-[#648aff]/25 bg-gradient-to-b from-[#4f7dff]/[0.12] to-white/[0.03] p-8 shadow-2xl shadow-[#3157d6]/10 sm:p-12"><div className="relative grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end"><div><div className="mb-7 flex items-center gap-2 text-sm text-white/60"><Sparkles size={16} className="text-[#6f93ff]"/> Diamond Design System Membership</div><div className="mb-8 flex items-end gap-2"><span className="text-7xl font-semibold tracking-[-0.06em]">$50</span><span className="pb-2 text-white/45">/ month</span></div><div className="grid gap-4 text-sm text-white/65 sm:grid-cols-2">{['Full plugin access','All future updates included','Priority support','Professional workflow tools','Commercial project use','Cancel anytime'].map(item=><div key={item} className="flex gap-3"><Check size={17} className="mt-0.5 shrink-0 text-[#6f93ff]"/>{item}</div>)}</div></div><a href={checkoutUrl} className="flex min-w-56 items-center justify-center gap-2 rounded-full bg-[#4f7dff] px-7 py-4 font-semibold text-white shadow-[0_0_30px_rgba(79,125,255,.28)] transition hover:scale-[1.02] hover:bg-[#658dff]">Access Now – $50/month <ArrowRight size={18}/></a></div></div></div></section>
+      <section id="faq" className="border-t border-white/10 py-24"><div className="mx-auto max-w-5xl px-6 lg:px-8"><h2 className="mb-10 text-3xl font-semibold tracking-tight">Frequently asked questions</h2><div className="divide-y divide-white/10 border-y border-white/10">{[['What is Diamond Design System?','A premium Blender plugin and jewelry design workflow built to help artists create professional jewelry faster.'],['How much does it cost?','Membership is $50 per month.'],['Do I need advanced Blender skills?','The system is designed to streamline jewelry workflows for both growing and experienced Blender users.'],['Can I cancel?','Yes. The membership is monthly and can be configured for cancellation through your billing provider.']].map(([q,a])=><div key={q} className="grid gap-4 py-7 sm:grid-cols-[0.8fr_1.2fr]"><h3 className="font-medium">{q}</h3><p className="text-sm leading-6 text-white/50">{a}</p></div>)}</div></div></section><footer className="border-t border-white/10 py-10"><div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 text-sm text-white/35 sm:flex-row sm:items-center sm:justify-between lg:px-8"><span>© 2026 Diamond Design System</span><span>Professional jewelry design for Blender.</span></div></footer>
     </main>
   )
 }
