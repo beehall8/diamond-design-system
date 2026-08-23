@@ -13,20 +13,14 @@ const features = [
 function BrandLogo() {
   return (
     <a href="#top" className="flex items-center gap-2.5" aria-label="Diamond Design System home">
-      <span className="relative grid size-7 place-items-center text-[#6f93ff]">
-        <span className="absolute size-[19px] rotate-45 border border-[#7fa0ff]/80 shadow-[0_0_10px_rgba(79,125,255,.24)]" />
-        <span className="relative text-[8px] font-bold tracking-[-0.02em] text-white">D</span>
-      </span>
-      <span className="flex flex-col uppercase leading-none">
-        <span className="text-[10px] font-semibold tracking-[0.16em] text-white">Diamond</span>
-        <span className="mt-1 text-[6px] font-medium tracking-[0.28em] text-white/55">Design System</span>
-      </span>
+      <span className="relative grid size-7 place-items-center text-[#6f93ff]"><span className="absolute size-[19px] rotate-45 border border-[#7fa0ff]/80 shadow-[0_0_10px_rgba(79,125,255,.24)]"/><span className="relative text-[8px] font-bold tracking-[-0.02em] text-white">D</span></span>
+      <span className="flex flex-col uppercase leading-none"><span className="text-[10px] font-semibold tracking-[0.16em] text-white">Diamond</span><span className="mt-1 text-[6px] font-medium tracking-[0.28em] text-white/55">Design System</span></span>
     </a>
   )
 }
 
 export default function App() {
-  const checkoutUrl = import.meta.env.VITE_CHECKOUT_URL || '#pricing'
+  const checkoutUrl = 'https://square.link/u/lGQNxrYh'
   return (
     <main className="min-h-screen bg-[#030407] text-white selection:bg-[#4f7dff] selection:text-white">
       <nav className="fixed inset-x-0 top-0 z-[100] border-b border-white/10 bg-[#030407]/80 backdrop-blur-xl"><div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8"><BrandLogo/><div className="hidden items-center gap-8 text-sm text-white/60 md:flex"><a className="transition hover:text-white" href="#features">Features</a><a className="transition hover:text-white" href="#pricing">Pricing</a><a className="transition hover:text-white" href="#faq">FAQ</a></div><a href="#pricing" className="rounded-full bg-gradient-to-r from-[#4f7dff] to-[#6c8dff] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_30px_rgba(79,125,255,.38)] transition hover:scale-[1.03]">Get Access</a></div></nav>
