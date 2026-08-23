@@ -42,10 +42,10 @@ export default function App() {
           </div>
 
           <div className="absolute bottom-[2%] right-[-7%] top-[2%] z-10 hidden w-[69%] lg:block">
-            <BrokenByDesign title="broken by design." height="100%" className="bg-transparent" />
+            <BrokenByDesign title="easy by design." height="100%" className="bg-transparent" />
           </div>
           <div className="absolute bottom-0 right-[-42%] top-[38%] z-10 w-[115%] opacity-90 lg:hidden">
-            <BrokenByDesign title="broken by design." height="100%" className="bg-transparent" />
+            <BrokenByDesign title="easy by design." height="100%" className="bg-transparent" />
           </div>
         </div>
       </section>
