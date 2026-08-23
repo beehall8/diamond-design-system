@@ -48,112 +48,37 @@ const MOBILE: Piece[] = [
   { id:'mobile-07b',x:43.494,y:37.961,w:48.3,h:18.872,cx:67.53,cy:47.37,ring:0 },
 ]
 
-const ATLAS = {
-  desktop:{ url:'atlas-desktop.png',w:900,h:2807 },
-  mobile:{ url:'atlas-mobile.png',w:900,h:3287 },
-}
-
+const ATLAS = { desktop:{ url:'atlas-desktop.png',w:900,h:2807 }, mobile:{ url:'atlas-mobile.png',w:900,h:3287 } }
 const RECTS: Record<'desktop'|'mobile',Record<string,[number,number,number,number]>> = {
-  desktop:{
-    'desktop-01a':[2,2,274,647],'desktop-01b':[278,2,109,468],'desktop-02a':[478,651,277,355],
-    'desktop-02b':[2,1057,560,351],'desktop-02c':[2,2240,351,230],'desktop-03a':[389,2,508,467],
-    'desktop-03b':[482,2691,276,103],'desktop-03c':[2,651,474,404],'desktop-04a':[2,1410,453,320],
-    'desktop-04b':[2,1732,606,265],'desktop-05a':[584,2472,251,164],'desktop-05b':[2,1999,614,239],
-    'desktop-06a':[2,2472,580,217],'desktop-06b':[2,2691,478,114],'desktop-07a':[457,1410,215,306],
-    'desktop-07b':[355,2240,189,222],
-  },
-  mobile:{
-    'mobile-01a':[523,1496,338,412],'mobile-01b':[2,1911,514,359],'mobile-01c':[468,3091,111,99],
-    'mobile-02a':[2,2,314,629],'mobile-02b':[2,633,417,443],'mobile-03a':[412,2622,301,243],
-    'mobile-03b':[2,1496,519,413],'mobile-04a':[2,1078,572,416],'mobile-04b':[2,2873,481,216],
-    'mobile-04c':[2,2622,408,249],'mobile-05a':[541,2272,251,267],'mobile-05b':[318,2,295,519],
-    'mobile-06a':[615,2,226,450],'mobile-06b':[416,2272,123,334],'mobile-07a':[2,3091,464,194],
-    'mobile-07b':[2,2272,412,348],
-  }
+  desktop:{'desktop-01a':[2,2,274,647],'desktop-01b':[278,2,109,468],'desktop-02a':[478,651,277,355],'desktop-02b':[2,1057,560,351],'desktop-02c':[2,2240,351,230],'desktop-03a':[389,2,508,467],'desktop-03b':[482,2691,276,103],'desktop-03c':[2,651,474,404],'desktop-04a':[2,1410,453,320],'desktop-04b':[2,1732,606,265],'desktop-05a':[584,2472,251,164],'desktop-05b':[2,1999,614,239],'desktop-06a':[2,2472,580,217],'desktop-06b':[2,2691,478,114],'desktop-07a':[457,1410,215,306],'desktop-07b':[355,2240,189,222]},
+  mobile:{'mobile-01a':[523,1496,338,412],'mobile-01b':[2,1911,514,359],'mobile-01c':[468,3091,111,99],'mobile-02a':[2,2,314,629],'mobile-02b':[2,633,417,443],'mobile-03a':[412,2622,301,243],'mobile-03b':[2,1496,519,413],'mobile-04a':[2,1078,572,416],'mobile-04b':[2,2873,481,216],'mobile-04c':[2,2622,408,249],'mobile-05a':[541,2272,251,267],'mobile-05b':[318,2,295,519],'mobile-06a':[615,2,226,450],'mobile-06b':[416,2272,123,334],'mobile-07a':[2,3091,464,194],'mobile-07b':[2,2272,412,348]}
 }
-
-function spriteStyle(setKey:'desktop'|'mobile',id:string){
-  const sheet=ATLAS[setKey],r=RECTS[setKey][id]
-  const [sx,sy,fw,fh]=r
-  return {
-    backgroundSize:`${(sheet.w/fw*100).toFixed(3)}% ${(sheet.h/fh*100).toFixed(3)}%`,
-    backgroundPosition:`${(sheet.w>fw?sx/(sheet.w-fw)*100:0).toFixed(3)}% ${(sheet.h>fh?sy/(sheet.h-fh)*100:0).toFixed(3)}%`,
-  }
-}
+function spriteStyle(setKey:'desktop'|'mobile',id:string){const sheet=ATLAS[setKey],r=RECTS[setKey][id];const [sx,sy,fw,fh]=r;return{backgroundSize:`${(sheet.w/fw*100).toFixed(3)}% ${(sheet.h/fh*100).toFixed(3)}%`,backgroundPosition:`${(sheet.w>fw?sx/(sheet.w-fw)*100:0).toFixed(3)}% ${(sheet.h>fh?sy/(sheet.h-fh)*100:0).toFixed(3)}%`}}
 
 function Wordmark({title}:{title:string}){
   const words=title.replace(/\.$/,'').split(/\s+/)
   return <span className="flex flex-col items-center justify-center text-center font-black uppercase leading-[.78] tracking-[-.075em] text-white/70 [text-shadow:0_0_22px_rgba(125,175,255,.26)]">
-    {words.map((w,i)=><em key={i} className={`${i===1?'text-[.52em] self-end mr-[13%] text-[#9db7ff]':''} not-italic`}>{w}</em>)}
+    {words.map((w,i)=><em key={i} className={`${i===1?'text-[.52em] self-center text-[#9db7ff]':''} not-italic`}>{w}</em>)}
   </span>
 }
 
-export default function BrokenByDesign({
-  assetsBase='https://cdn.jsdelivr.net/gh/gughigug/broken-by-design-assets@main',
-  title='broken by design.',
-  height='100%',
-  interactive=true,
-  className='',
-}:BrokenByDesignProps){
-  const [portrait,setPortrait]=useState(false)
-  const [active,setActive]=useState<string|null>(null)
-  const [ready,setReady]=useState(false)
-
-  useEffect(()=>{
-    const mq=window.matchMedia('(max-aspect-ratio: 1/1)')
-    const apply=()=>setPortrait(mq.matches)
-    apply(); mq.addEventListener('change',apply)
-    return()=>mq.removeEventListener('change',apply)
-  },[])
-
-  const setKey=portrait?'mobile':'desktop'
-  const pieces=portrait?MOBILE:DESKTOP
-  const atlasUrl=`${assetsBase}/${ATLAS[setKey].url}`
-  const poses=useMemo(()=>pieces.map((p,i)=>({
-    rx:((i%5)-2)*.65,
-    ry:((i%4)-1.5)*.8,
-    z:(2-p.ring)*5,
-  })),[pieces])
-
-  useEffect(()=>{
-    setReady(false)
-    const img=new Image()
-    img.onload=()=>setReady(true)
-    img.onerror=()=>setReady(true)
-    img.src=atlasUrl
-  },[atlasUrl])
-
+export default function BrokenByDesign({assetsBase='https://cdn.jsdelivr.net/gh/gughigug/broken-by-design-assets@main',title='broken by design.',height='100%',interactive=true,className=''}:BrokenByDesignProps){
+  const [portrait,setPortrait]=useState(false),[active,setActive]=useState<string|null>(null),[ready,setReady]=useState(false)
+  useEffect(()=>{const mq=window.matchMedia('(max-aspect-ratio: 1/1)');const apply=()=>setPortrait(mq.matches);apply();mq.addEventListener('change',apply);return()=>mq.removeEventListener('change',apply)},[])
+  const setKey=portrait?'mobile':'desktop',pieces=portrait?MOBILE:DESKTOP,atlasUrl=`${assetsBase}/${ATLAS[setKey].url}`
+  const poses=useMemo(()=>pieces.map((p,i)=>({rx:((i%5)-2)*.65,ry:((i%4)-1.5)*.8,z:(2-p.ring)*5})),[pieces])
+  useEffect(()=>{setReady(false);const img=new Image();img.onload=()=>setReady(true);img.onerror=()=>setReady(true);img.src=atlasUrl},[atlasUrl])
   return <section className={`relative isolate overflow-hidden bg-[#030407] [perspective:1200px] ${className}`} style={{height}} aria-label={title}>
     <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_48%_48%,rgba(79,125,255,.22),transparent_28%),radial-gradient(ellipse_at_60%_85%,rgba(28,61,160,.22),transparent_46%)]" />
     <div className="absolute inset-[5%_2%] sm:inset-[5%_3%]">
-      <div className="absolute inset-0 grid place-items-center text-[clamp(58px,8.7vw,170px)] opacity-20">
-        <Wordmark title={title}/>
-      </div>
+      <div className="absolute inset-0 grid place-items-center text-[clamp(58px,8.7vw,170px)] opacity-20"><Wordmark title={title}/></div>
       <div className="absolute inset-0 [transform-style:preserve-3d]">
-        {ready&&pieces.map((p,i)=>{
-          const sprite=spriteStyle(setKey,p.id)
-          const hot=active===p.id
-          const pose=poses[i]
-          const dx=(p.cx-50)*.22,dy=(p.cy-50)*.18
-          return <div key={p.id}
-            onPointerEnter={()=>interactive&&setActive(p.id)} onPointerLeave={()=>setActive(null)}
-            className="absolute transition-[transform,filter] duration-500 ease-out"
-            style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.w}%`,height:`${p.h}%`,zIndex:10+(2-p.ring),
-              transform:`translate3d(${hot?dx:0}px,${hot?dy:0}px,${hot?82:pose.z}px) rotateX(${hot?-5+pose.rx:pose.rx}deg) rotateY(${hot?7+pose.ry:pose.ry}deg) scale(${hot?1.035:1})`,
-              filter:hot?'brightness(1.3) drop-shadow(0 28px 45px rgba(0,0,0,.72)) drop-shadow(0 0 24px rgba(93,144,255,.38))':'brightness(1.04)'} }>
-            <div className="absolute inset-0 overflow-hidden"
-              style={{WebkitMaskImage:`url(${atlasUrl})`,maskImage:`url(${atlasUrl})`,WebkitMaskRepeat:'no-repeat',maskRepeat:'no-repeat',WebkitMaskSize:sprite.backgroundSize,maskSize:sprite.backgroundSize,WebkitMaskPosition:sprite.backgroundPosition,maskPosition:sprite.backgroundPosition}}>
-              <div className="absolute inset-0" style={{backgroundImage:`url(${atlasUrl})`,backgroundSize:sprite.backgroundSize,backgroundPosition:sprite.backgroundPosition,backgroundRepeat:'no-repeat'}}/>
-              <div className="absolute inset-0 bg-[linear-gradient(132deg,rgba(144,194,255,.22),rgba(59,105,255,.03)_37%,transparent_55%,rgba(67,106,255,.18))] mix-blend-screen"/>
-              <div className="absolute" style={{width:`${10000/p.w}%`,height:`${10000/p.h}%`,left:`${-(p.x/p.w)*100}%`,top:`${-(p.y/p.h)*100}%`}}>
-                <div className="grid h-full w-full place-items-center text-[clamp(58px,8.7vw,170px)]"><Wordmark title={title}/></div>
-              </div>
-              {hot&&<div className="absolute inset-0 bg-[radial-gradient(circle_at_55%_45%,rgba(195,225,255,.34),rgba(93,144,255,.08)_38%,transparent_72%)] mix-blend-screen"/>}
-            </div>
-          </div>
-        })}
+        {ready&&pieces.map((p,i)=>{const sprite=spriteStyle(setKey,p.id),hot=active===p.id,pose=poses[i],dx=(p.cx-50)*.22,dy=(p.cy-50)*.18;return <div key={p.id} onPointerEnter={()=>interactive&&setActive(p.id)} onPointerLeave={()=>setActive(null)} className="absolute transition-[transform,filter] duration-500 ease-out" style={{left:`${p.x}%`,top:`${p.y}%`,width:`${p.w}%`,height:`${p.h}%`,zIndex:10+(2-p.ring),transform:`translate3d(${hot?dx:0}px,${hot?dy:0}px,${hot?82:pose.z}px) rotateX(${hot?-5+pose.rx:pose.rx}deg) rotateY(${hot?7+pose.ry:pose.ry}deg) scale(${hot?1.035:1})`,filter:hot?'brightness(1.3) drop-shadow(0 28px 45px rgba(0,0,0,.72)) drop-shadow(0 0 24px rgba(93,144,255,.38))':'brightness(1.04)'}}>
+          <div className="absolute inset-0 overflow-hidden" style={{WebkitMaskImage:`url(${atlasUrl})`,maskImage:`url(${atlasUrl})`,WebkitMaskRepeat:'no-repeat',maskRepeat:'no-repeat',WebkitMaskSize:sprite.backgroundSize,maskSize:sprite.backgroundSize,WebkitMaskPosition:sprite.backgroundPosition,maskPosition:sprite.backgroundPosition}}>
+            <div className="absolute inset-0" style={{backgroundImage:`url(${atlasUrl})`,backgroundSize:sprite.backgroundSize,backgroundPosition:sprite.backgroundPosition,backgroundRepeat:'no-repeat'}}/><div className="absolute inset-0 bg-[linear-gradient(132deg,rgba(144,194,255,.22),rgba(59,105,255,.03)_37%,transparent_55%,rgba(67,106,255,.18))] mix-blend-screen"/>
+            <div className="absolute" style={{width:`${10000/p.w}%`,height:`${10000/p.h}%`,left:`${-(p.x/p.w)*100}%`,top:`${-(p.y/p.h)*100}%`}}><div className="grid h-full w-full place-items-center text-[clamp(58px,8.7vw,170px)]"><Wordmark title={title}/></div></div>{hot&&<div className="absolute inset-0 bg-[radial-gradient(circle_at_55%_45%,rgba(195,225,255,.34),rgba(93,144,255,.08)_38%,transparent_72%)] mix-blend-screen"/>}
+          </div></div>})}
       </div>
-    </div>
-    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(112deg,transparent_26%,rgba(71,122,255,.06)_50%,transparent_70%)]"/>
+    </div><div className="pointer-events-none absolute inset-0 bg-[linear-gradient(112deg,transparent_26%,rgba(71,122,255,.06)_50%,transparent_70%)]"/>
   </section>
 }
