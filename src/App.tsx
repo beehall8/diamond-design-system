@@ -10,7 +10,39 @@ const features = [
   { icon: Zap, title: 'Workflow Boost', text: 'Optimized tools that help you design faster and more efficiently.' },
 ]
 
-const trustedBrands = ['JOHNNY DANG', 'ICEBOX', 'TRAAX NYC', 'THE JEWELERS CLUB', 'PRIVATE JEWELER']
+const trustedBrands = [
+  { key: 'johnny', mark: 'JD', name: 'JOHNNY DANG', sub: 'FINE CUSTOM JEWELRY' },
+  { key: 'icebox', name: 'ICEBOX', sub: 'DIAMONDS & WATCHES' },
+  { key: 'traax', name: 'TRAAX', sub: 'NYC' },
+  { key: 'jewelers', name: 'THE JEWELERS CLUB' },
+  { key: 'private', name: 'PRIVATE JEWELER' },
+]
+
+function TrustedBrand({ brand }: { brand: (typeof trustedBrands)[number] }) {
+  if (brand.key === 'johnny') {
+    return <div className="flex flex-col items-center justify-center text-white/72">
+      <div className="mb-1 font-serif text-3xl leading-none tracking-[-0.12em]">J<span className="relative -left-1">D</span></div>
+      <div className="font-serif text-[15px] tracking-[0.08em]">{brand.name}</div>
+      <div className="mt-1 text-[7px] tracking-[0.24em] text-white/38">{brand.sub}</div>
+    </div>
+  }
+  if (brand.key === 'icebox') {
+    return <div className="flex flex-col items-center justify-center text-white/72">
+      <div className="font-serif text-[28px] tracking-[0.18em]">{brand.name}</div>
+      <div className="mt-1 text-[7px] tracking-[0.30em] text-white/38">{brand.sub}</div>
+    </div>
+  }
+  if (brand.key === 'traax') {
+    return <div className="flex flex-col items-center justify-center text-white/72">
+      <div className="font-serif text-[26px] tracking-[0.12em]">{brand.name}</div>
+      <div className="mt-1 font-serif text-[10px] tracking-[0.35em] text-white/48">{brand.sub}</div>
+    </div>
+  }
+  if (brand.key === 'jewelers') {
+    return <div className="max-w-[130px] text-center font-serif text-[18px] uppercase leading-[0.92] tracking-[0.04em] text-white/70">THE<br/>JEWELERS<br/>CLUB</div>
+  }
+  return <div className="max-w-[140px] text-center font-serif text-[20px] uppercase leading-[0.95] tracking-[0.05em] text-white/70">PRIVATE<br/>JEWELER</div>
+}
 
 export default function App() {
   const checkoutUrl = import.meta.env.VITE_CHECKOUT_URL || '#pricing'
@@ -57,8 +89,8 @@ export default function App() {
       <section className="border-t border-white/10 bg-[#030407]">
         <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
           <p className="mb-8 text-center text-[10px] font-semibold uppercase tracking-[0.28em] text-[#6f93ff]">Trusted by 3D artists & jewelers worldwide</p>
-          <div className="grid grid-cols-2 items-center gap-x-8 gap-y-7 text-center sm:grid-cols-3 lg:grid-cols-5">
-            {trustedBrands.map((brand, index) => <div key={brand} className="flex min-h-14 items-center justify-center text-white/65"><span className={`${index===1 || index===2 ? 'tracking-[0.12em]' : 'tracking-[0.04em]'} text-sm font-semibold sm:text-base`}>{brand}</span></div>)}
+          <div className="grid grid-cols-2 items-center gap-x-8 gap-y-8 text-center sm:grid-cols-3 lg:grid-cols-5">
+            {trustedBrands.map((brand) => <div key={brand.key} className="flex min-h-20 items-center justify-center"><TrustedBrand brand={brand}/></div>)}
           </div>
         </div>
       </section>
