@@ -1,5 +1,6 @@
 import { ArrowRight, Check, DraftingCompass, Gem, Grid3X3, Layers3, Play, Settings2, ShieldCheck, Sparkles, Zap } from 'lucide-react'
 import BrokenByDesign from '@/components/ui/broken-by-design'
+import { diamondLogo } from './logoData'
 
 const features = [
   { icon: Gem, title: 'Parametric Gems', text: 'Smart gem tools with automatic proportions and real-world accuracy.' },
@@ -12,9 +13,8 @@ const features = [
 
 function BrandLogo() {
   return (
-    <a href="#top" className="flex items-center gap-2.5" aria-label="Diamond Design System home">
-      <span className="relative grid size-7 place-items-center text-[#6f93ff]"><span className="absolute size-[19px] rotate-45 border border-[#7fa0ff]/80 shadow-[0_0_10px_rgba(79,125,255,.24)]"/><span className="relative text-[8px] font-bold tracking-[-0.02em] text-white">D</span></span>
-      <span className="flex flex-col uppercase leading-none"><span className="text-[10px] font-semibold tracking-[0.16em] text-white">Diamond</span><span className="mt-1 text-[6px] font-medium tracking-[0.28em] text-white/55">Design System</span></span>
+    <a href="#top" className="flex items-center" aria-label="Diamond Design System home">
+      <img src={diamondLogo} alt="Diamond Design System" className="h-12 w-auto object-contain sm:h-14" />
     </a>
   )
 }
