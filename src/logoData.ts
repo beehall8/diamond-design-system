@@ -1,0 +1,1 @@
+export const diamondLogo = 'data:image/webp;base64,UklGRuaTAABXRUJQVlA4WAoAAAAQAAAABwIArAAAQUxQSOZXAAAB/yckSPD/eGtEpO4TEttGkiSpI+rNSaX/Bld1L+4siOj/BDzPHiFZX/N5nmf/v0+2npKE'
