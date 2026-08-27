@@ -7,7 +7,7 @@ const features = [
   { icon: Settings2, title: 'Advanced Settings', text: 'Build complex settings with ease. Prongs, bezels, halos, pavé and more.' },
   { icon: Grid3X3, title: 'Pavé System', text: 'Intelligent pavé tools that save hours of manual work.' },
   { icon: DraftingCompass, title: 'CAD Precision', text: 'Production-ready models with clean geometry and scale.' },
-  { icon: Layers3, title: 'Materials Library', text: 'Realistic materials and metals with photoreal rendering.' },
+  { icon: Layers3, title: 'Boolean System', text: 'Joins and Difference operations built in.' },
   { icon: Zap, title: 'Workflow Boost', text: 'Optimized tools that help you design faster and more efficiently.' },
 ]
 
